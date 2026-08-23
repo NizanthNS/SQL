@@ -101,7 +101,6 @@ FROM C;
 SELECT *
 FROM B
 LEFT JOIN C
-	ON C.Num_ID = B.Num_ID;
 
 ALTER TABLE C
 RENAME COLUMN Num_ID TO Number_ID;
@@ -109,8 +108,6 @@ RENAME COLUMN Num_ID TO Number_ID;
 SELECT *
 FROM B
 CROSS JOIN C
-	ON C.Number_ID = B.Num_ID;
-    
     
 CREATE TABLE D (
 	Num_ID INT
@@ -118,7 +115,7 @@ CREATE TABLE D (
 
 INSERT INTO D
 VALUES (1),
-	     (2),
+	   (2),
        (3);    
 
     
@@ -128,7 +125,7 @@ CREATE TABLE E (
 
 INSERT INTO E
 VALUES (1),
-	     (2),
+	   (2),
        (3),
        (4),
        (5),
@@ -139,8 +136,70 @@ FROM D;
 
 SELECT *
 FROM E;
-    
+
 SELECT *
 FROM D
 CROSS JOIN E
-	ON D.Num_ID = E.Number_ID; -- CROSS JOIN IS Not Valid if values are different
+
+MORE EXAMPLE
+
+USE Daily_SQL;
+
+CREATE TABLE Cross1 (
+	C_ID INT,
+    C_Name VARCHAR(50)
+);
+
+INSERT INTO Cross1
+VALUES (1, 'Alice'),
+	   (2, 'Jelin'),
+       (3, 'Rocky'),
+       (4, 'Jade');
+
+SELECT *
+FROM Cross1;
+
+CREATE TABLE Cross2 (
+	C_ID INT,
+    Product VARCHAR(50)
+);
+
+INSERT INTO Cross2
+VALUES (1, 'SSD'),
+	   (2, 'HARD DISK'),
+       (3, 'GRAPHICS CARD'),
+       (4, 'CPU');
+       
+SELECT *
+FROM Cross2;
+
+SELECT *
+FROM Cross1
+CROSS JOIN Cross2
+
+==============================	
+			OUTPUT
+==============================	
+4	Jade	1	SSD
+3	Rocky	1	SSD
+2	Jelin	1	SSD
+1	Alice	1	SSD
+4	Jade	2	HARD DISK
+3	Rocky	2	HARD DISK
+2	Jelin	2	HARD DISK
+1	Alice	2	HARD DISK
+4	Jade	3	GRAPHICS CARD
+3	Rocky	3	GRAPHICS CARD
+2	Jelin	3	GRAPHICS CARD
+1	Alice	3	GRAPHICS CARD
+4	Jade	4	CPU
+3	Rocky	4	CPU
+2	Jelin	4	CPU
+1	Alice	4	CPU
+
+CROSS JOIN
+A × B
+↓
+Everything with everything
+↓
+No ON needed
