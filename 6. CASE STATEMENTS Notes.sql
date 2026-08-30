@@ -8,7 +8,7 @@ COUNT → Give a 1 🔢
 AVG   → Give the MONEY, unwanted rows = NULL 🚫
 
 
-1️⃣ SUM — TOTAL AMOUNT
+️1. SUM — TOTAL AMOUNT
 ----------------------
 
 Use:
@@ -54,7 +54,7 @@ THEN Amount
 ELSE 0
 
 
-2️⃣ COUNT — COUNT MATCHING ROWS
+2️. COUNT — COUNT MATCHING ROWS
 -------------------------------
 
 Use:
