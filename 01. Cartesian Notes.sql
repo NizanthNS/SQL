@@ -1,0 +1,205 @@
+CARTESIAN PRODUCT / CROSS JOIN
+
+Definition:
+A CROSS JOIN is a SQL join operation that combines every row from one table with every row from another table. 
+The result produced by a CROSS JOIN is called the Cartesian Product.
+
+Formula:
+If Table A has m rows and Table B has n rows,
+
+Total Rows = m × n
+
+Example:
+
+Customers
+
++-------------+-------+
+| Customer_ID | Name  |
++-------------+-------+
+| 1           | Alice |
+| 2           | Bob   |
++-------------+-------+
+
+Products
+
++------------+----------+
+| Product_ID | Product  |
++------------+----------+
+| 101        | Laptop   |
+| 102        | Mouse    |
+| 103        | Keyboard |
++------------+----------+
+
+Query:
+
+SELECT *
+FROM Customers
+CROSS JOIN Products;
+
+Result:
+
+Alice  Laptop
+Alice  Mouse
+Alice  Keyboard
+Bob    Laptop
+Bob    Mouse
+Bob    Keyboard
+
+Total Rows:
+2 Customers × 3 Products = 6 Rows
+
+Key Points:
+• CROSS JOIN returns every possible combination of rows.
+• CROSS JOIN is the SQL operation.
+• Cartesian Product is the result of that operation.
+• No ON condition is required.
+• Can also occur accidentally if tables are combined without a proper join condition.
+
+Real-world Uses:
+• Every Employee × Every Shift
+• Every Product × Every Color
+• Every Student × Every Subject
+• Calendar Dates × Stores
+• Sizes × Colors for Inventory
+
+Interview Definition:
+"A CROSS JOIN is the SQL operation that combines every row from one table with every row from another table. 
+The result produced by a CROSS JOIN is called the Cartesian Product."
+
+Easy to Remember:
+CROSS JOIN (Operation) → CARTESIAN PRODUCT (Result)
+
+CREATE TABLE C (
+	Num_ID INT
+    );
+
+INSERT INTO C
+VALUES (1),
+	   (2),
+       (3);    
+
+    
+CREATE TABLE B (
+	Num_ID INT
+	);
+
+INSERT INTO B
+VALUES (1),
+	   (2),
+       (3),
+       (1),
+       (2),
+       (3);
+       
+    
+SELECT *
+FROM B;
+
+SELECT *
+FROM C;
+
+SELECT *
+FROM B
+LEFT JOIN C
+
+ALTER TABLE C
+RENAME COLUMN Num_ID TO Number_ID;
+
+SELECT *
+FROM B
+CROSS JOIN C
+    
+CREATE TABLE D (
+	Num_ID INT
+    );
+
+INSERT INTO D
+VALUES (1),
+	   (2),
+       (3);    
+
+    
+CREATE TABLE E (
+	Number_ID INT
+	);
+
+INSERT INTO E
+VALUES (1),
+	   (2),
+       (3),
+       (4),
+       (5),
+       (6);
+
+SELECT *
+FROM D;
+
+SELECT *
+FROM E;
+
+SELECT *
+FROM D
+CROSS JOIN E
+
+MORE EXAMPLE
+
+USE Daily_SQL;
+
+CREATE TABLE Cross1 (
+	C_ID INT,
+    C_Name VARCHAR(50)
+);
+
+INSERT INTO Cross1
+VALUES (1, 'Alice'),
+	   (2, 'Jelin'),
+       (3, 'Rocky'),
+       (4, 'Jade');
+
+SELECT *
+FROM Cross1;
+
+CREATE TABLE Cross2 (
+	C_ID INT,
+    Product VARCHAR(50)
+);
+
+INSERT INTO Cross2
+VALUES (1, 'SSD'),
+	   (2, 'HARD DISK'),
+       (3, 'GRAPHICS CARD'),
+       (4, 'CPU');
+       
+SELECT *
+FROM Cross2;
+
+SELECT *
+FROM Cross1
+CROSS JOIN Cross2
+
+==============================	
+			OUTPUT
+==============================	
+4	Jade	1	SSD
+3	Rocky	1	SSD
+2	Jelin	1	SSD
+1	Alice	1	SSD
+4	Jade	2	HARD DISK
+3	Rocky	2	HARD DISK
+2	Jelin	2	HARD DISK
+1	Alice	2	HARD DISK
+4	Jade	3	GRAPHICS CARD
+3	Rocky	3	GRAPHICS CARD
+2	Jelin	3	GRAPHICS CARD
+1	Alice	3	GRAPHICS CARD
+4	Jade	4	CPU
+3	Rocky	4	CPU
+2	Jelin	4	CPU
+1	Alice	4	CPU
+
+CROSS JOIN
+A × B
+↓
+Everything with everything
+↓
+No ON needed
