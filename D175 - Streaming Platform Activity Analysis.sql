@@ -406,6 +406,6 @@ FROM (
 			ON U.User_ID = W.User_ID
 		WHERE W.Watch_Status = 'Completed'
 		GROUP BY W.Content_Category, U.User_ID, U.User_Name
-	)C
-)A
+	)U
+)D
 WHERE D_Rank = 1;
