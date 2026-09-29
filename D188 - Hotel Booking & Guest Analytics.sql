@@ -485,12 +485,6 @@ GROUP BY C.Cohort_Month;
 -- Streak_End_Month
 -- Streak_Months
 
-SELECT * FROM Guests;
-
-SELECT * FROM Bookings;
-
-SELECT * FROM Payments;
-
 WITH CTE AS (
 	SELECT DISTINCT G.Guest_ID, G.Guest_Name,
 		   DATE_FORMAT(B.Booking_Date, '%Y-%m-01') AS Booking_Month
