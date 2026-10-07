@@ -1777,3 +1777,214 @@ Types of SQL Triggers:
 6. DELETE Trigger
 
 Trigger = Automatic action performed by the database whenever a specified event occurs on a table or view.
+
+=================================================
+                SQL KEYS
+=================================================
+
+1. PRIMARY KEY
+--------------
+• Uniquely identifies each row
+• Cannot contain NULL
+• Only one PRIMARY KEY per table
+
+Example:
+StudentID
+
+-------------------------------------------------
+
+2. CANDIDATE KEY
+----------------
+• Any column that can uniquely identify a row
+• Multiple candidate keys can exist
+
+Example:
+EmpID, Email
+
+-------------------------------------------------
+
+3. ALTERNATE KEY
+----------------
+• Candidate key not chosen as PRIMARY KEY
+
+Example:
+Primary Key   : EmpID
+Alternate Key : Email
+
+-------------------------------------------------
+
+4. SUPER KEY
+------------
+• Any column or combination of columns
+  that uniquely identifies a row
+
+Example:
+EmpID
+EmpID + Name
+EmpID + Email
+
+-------------------------------------------------
+
+5. FOREIGN KEY
+--------------
+• Creates relationship between tables
+• References PRIMARY KEY of another table
+
+Example:
+Employee.DeptID → Department.DeptID
+
+-------------------------------------------------
+
+6. COMPOSITE KEY
+----------------
+• Combination of two or more columns
+• Together uniquely identify a row
+
+Example:
+(StudentID, CourseID)
+
+-------------------------------------------------
+
+7. UNIQUE KEY
+-------------
+• Prevents duplicate values
+• Usually allows NULL values
+• Multiple UNIQUE keys allowed
+
+Example:
+Email UNIQUE
+
+=================================================
+              KEY HIERARCHY
+=================================================
+
+Super Key
+    ↓
+Candidate Key
+    ↓
+Primary Key
+
+Alternate Key = Candidate Key not selected
+Foreign Key   = Relationship between tables
+Composite Key = Multiple columns as key
+Unique Key    = No duplicate values
+
+=================================================
+             SQL CONSTRAINTS
+=================================================
+
+1. NOT NULL
+-----------
+• Column cannot contain NULL values
+
+Example:
+Name VARCHAR(50) NOT NULL
+
+-------------------------------------------------
+
+2. UNIQUE
+---------
+• No duplicate values allowed
+
+Example:
+Email VARCHAR(100) UNIQUE
+
+-------------------------------------------------
+
+3. PRIMARY KEY
+--------------
+• Unique + NOT NULL
+• Identifies each row
+
+Example:
+StudentID INT PRIMARY KEY
+
+-------------------------------------------------
+
+4. FOREIGN KEY
+--------------
+• Maintains referential integrity
+• Value must exist in parent table
+
+Example:
+FOREIGN KEY (DeptID)
+REFERENCES Department(DeptID)
+
+-------------------------------------------------
+
+5. CHECK
+--------
+• Restricts values based on condition
+
+Example:
+Age INT CHECK (Age >= 18)
+
+-------------------------------------------------
+
+6. DEFAULT
+----------
+• Assigns default value
+
+Example:
+Status VARCHAR(20)
+DEFAULT 'Active'
+
+-------------------------------------------------
+
+7. AUTO_INCREMENT / IDENTITY
+----------------------------
+• Automatically generates values
+
+MySQL:
+ID INT AUTO_INCREMENT
+
+SQL Server:
+ID INT IDENTITY(1,1)
+
+=================================================
+         PRIMARY KEY vs UNIQUE
+=================================================
+
+PRIMARY KEY
+-----------
+✓ Unique
+✓ Cannot be NULL
+✓ One per table
+✓ Identifies records
+
+UNIQUE
+------
+✓ Unique
+✓ NULL allowed (DB dependent)
+✓ Multiple per table
+✓ Ensures uniqueness
+
+=================================================
+      MOST ASKED INTERVIEW QUESTION
+=================================================
+
+Q: Difference between PRIMARY KEY and
+   FOREIGN KEY?
+
+PRIMARY KEY:
+• Uniquely identifies rows
+• Cannot contain NULL
+
+FOREIGN KEY:
+• References PRIMARY KEY of another table
+• Creates relationship between tables
+• Can contain NULL (if allowed)
+
+Example:
+
+Department
+-----------
+DeptID (PK)
+
+Employee
+-----------
+EmpID  (PK)
+DeptID (FK)
+
+Employee.DeptID → Department.DeptID
+=================================================
