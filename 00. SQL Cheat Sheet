@@ -1697,3 +1697,83 @@ SELECT C.Customer_Name,
 
    ============================================================
 */
+
+Types of Triggers in SQL
+
+A Trigger is a special stored procedure that automatically executes when a specified event occurs on a table or view.
+
+1. BEFORE Trigger
+• Executes before INSERT, UPDATE, or DELETE operations.
+• Used for validation and checking data before it is stored.
+
+Example:
+BEFORE INSERT Trigger checks whether salary is greater than zero before inserting a record.
+
+2. AFTER Trigger
+• Executes after INSERT, UPDATE, or DELETE operations.
+• Used for auditing, logging, and tracking changes.
+
+Example:
+AFTER UPDATE Trigger stores old and new values in an audit table.
+
+3. INSTEAD OF Trigger
+• Executes instead of the triggering action.
+• Commonly used on views.
+• Replaces INSERT, UPDATE, or DELETE operations with custom logic.
+
+Example:
+An INSTEAD OF INSERT Trigger on a view inserts data into multiple underlying tables.
+
+Based on Events
+
+A. INSERT Trigger
+• Fires when a new row is inserted into a table.
+
+Example:
+Automatically record the insertion date when a new employee is added.
+
+B. UPDATE Trigger
+• Fires when existing data is modified.
+
+Example:
+Log salary changes whenever employee salary is updated.
+
+C. DELETE Trigger
+• Fires when rows are deleted.
+
+Example:
+Store deleted records in a backup table before removal.
+
+Syntax Example
+
+CREATE TRIGGER trg_employee_insert
+ON Employees
+AFTER INSERT
+AS
+BEGIN
+    PRINT 'A new employee record was inserted';
+END;
+
+Advantages of Triggers
+• Enforce business rules.
+• Maintain data integrity.
+• Automatically audit changes.
+• Prevent invalid transactions.
+• Automate repetitive tasks.
+
+Disadvantages of Triggers
+• Can slow database performance.
+• Difficult to debug.
+• Hidden execution may make maintenance harder.
+
+Summary
+
+Types of SQL Triggers:
+1. BEFORE Trigger
+2. AFTER Trigger
+3. INSTEAD OF Trigger
+4. INSERT Trigger
+5. UPDATE Trigger
+6. DELETE Trigger
+
+Trigger = Automatic action performed by the database whenever a specified event occurs on a table or view.
