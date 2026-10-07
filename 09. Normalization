@@ -1,0 +1,105 @@
+SQL Normalization
+
+Normalization is the process of organizing data in a database to reduce redundancy (duplicate data) and improve data integrity. It helps ensure that data is stored efficiently and consistently.
+
+Why Normalize a Database?
+• Eliminates duplicate data.
+• Reduces storage space.
+• Prevents data inconsistencies.
+• Makes updates, inserts, and deletes easier.
+• Improves overall database design.
+
+Example (Unnormalized Table)
+
+StudentID | StudentName | Course1 | Course2
+------------------------------------------------
+101       | Alice       | SQL     | Python
+102       | Bob         | Java    | SQL
+
+Problems:
+• Multiple course columns create duplication.
+• Difficult to add more courses.
+• Data becomes harder to maintain.
+
+Normalized Structure
+
+Students Table
+
+StudentID | StudentName
+-----------------------
+101       | Alice
+102       | Bob
+
+Courses Table
+
+CourseID | CourseName
+---------------------
+1        | SQL
+2        | Python
+3        | Java
+
+StudentCourses Table
+
+StudentID | CourseID
+--------------------
+101       | 1
+101       | 2
+102       | 3
+102       | 1
+
+Benefits:
+• Student information is stored once.
+• Course information is stored once.
+• Relationships are managed separately.
+• Easier to maintain and scale.
+
+Normal Forms
+
+1NF (First Normal Form)
+• Each column contains atomic (single) values.
+• No repeating groups.
+
+Bad:
+ID | Phones
+------------------------------
+1  | 9876543210, 8765432109
+
+Good:
+ID | Phone
+----------------
+1  | 9876543210
+1  | 8765432109
+
+2NF (Second Normal Form)
+• Must be in 1NF.
+• Every non-key attribute must depend on the entire primary key.
+• Eliminates partial dependencies.
+
+3NF (Third Normal Form)
+• Must be in 2NF.
+• Non-key attributes should depend only on the primary key.
+• Eliminates transitive dependencies.
+
+Example:
+
+Bad:
+EmpID | DeptID | DeptName
+
+Here, DeptName depends on DeptID, not directly on EmpID.
+
+Good:
+Employees(EmpID, DeptID)
+Departments(DeptID, DeptName)
+
+Advantages of Normalization
+• Reduces data redundancy.
+• Improves data consistency and integrity.
+• Simplifies maintenance.
+• Prevents update, insert, and delete anomalies.
+• Makes database design more efficient.
+
+Disadvantage
+• Highly normalized databases often require more JOIN operations, which can make queries more complex.
+
+Conclusion
+Normalization is the process of dividing data into related tables and establishing relationships between them to minimize duplication, improve consistency, and maintain data integrity in SQL databases.
