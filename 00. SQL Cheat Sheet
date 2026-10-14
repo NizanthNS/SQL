@@ -1988,3 +1988,52 @@ DeptID (FK)
 
 Employee.DeptID → Department.DeptID
 =================================================
+
+CREATE TABLE Stocks (
+    Stock_ID INT PRIMARY KEY,
+    Stock_Name VARCHAR(50),
+    Quantity INT,
+    Price DECIMAL(10,2)
+);
+
+CREATE TABLE Stock_Audit (
+    Audit_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Stock_ID INT,
+    Old_Quantity INT,
+    New_Quantity INT,
+    Old_Price DECIMAL(10,2),
+    New_Price DECIMAL(10,2),
+    Change_Type VARCHAR(10),
+    Changed_At TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+DELIMITER //
+
+CREATE TRIGGER trg_stock_update
+AFTER UPDATE ON Stocks
+FOR EACH ROW
+BEGIN
+    INSERT INTO Stock_Audit (
+        Stock_ID,
+        Old_Quantity,
+        New_Quantity,
+        Old_Price,
+        New_Price,
+        Change_Type
+    )
+    VALUES (
+        OLD.Stock_ID,
+        OLD.Quantity,
+        NEW.Quantity,
+        OLD.Price,
+        NEW.Price,
+        'UPDATE'
+    );
+END //
+
+DELIMITER ;
+
+UPDATE Stocks
+SET Quantity = 80,
+    Price = 160.00
+WHERE Stock_ID = 1;
