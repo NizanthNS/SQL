@@ -341,7 +341,7 @@ BEGIN
             NEW.Training_Cost,
             OLD.Training_Status,
             NEW.Training_Status,
-            'Action Type'
+            'UPDATE'
 		);
 	END IF;
 END //
