@@ -1,5 +1,5 @@
 -- =========================================================
--- SESSION 05 — Logistics Shipment Analytics & Auditing
+-- SESSION — Logistics Shipment Analytics & Auditing
 -- MySQL Daily SQL Practice
 -- =========================================================
 
