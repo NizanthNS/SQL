@@ -1,5 +1,5 @@
 -- =========================================================
--- SESSION 07 — Hr Employee Training Analytics & Auditing
+-- SESSION — Hr Employee Training Analytics & Auditing
 -- MySQL Daily SQL Practice
 -- =========================================================
 
