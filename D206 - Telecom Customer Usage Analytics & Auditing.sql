@@ -116,7 +116,7 @@ SELECT * FROM Recharge_Audit;
 
 -- Find customers who made another recharge
 -- within 2 days of their previous recharge.
---
+
 -- Return:
 -- Customer_ID
 -- Customer_Name
